@@ -5,7 +5,7 @@ Für Arbeiten an Konfigurations-Dateien unbedingt Text-Editoren benutzen, die Ze
 Unter Windows z.B TextPad: 
 https://www.textpad.com/de/download 
 
-#### Für Windows DNS in host Datei eintragen (C:\Window\System32\drivers\etc\hosts)
+#### Für Windows DNS in host Datei eintragen (C:\Windows\System32\drivers\etc\hosts)
 #### Für Mac OSX, Linux DNS in host Datei eintragen (/etc/hosts)
 - 127.0.0.1	bta-movies-start.loc
 
@@ -18,7 +18,7 @@ Zugriffsrechte unter Windows setzen
 ```
 <VirtualHost *:80>
 	ServerName bta-movies-start.loc
-        DocumentRoot "FULL PATH TO ... /htdocs/bta-movies-start"
+    DocumentRoot "FULL PATH TO ... /htdocs/bta-movies-start"
 	CustomLog "logs/access_bta-movies-start.log" common
 	ErrorLog "logs/error_bta-movies-start.log"
 </VirtualHost>
