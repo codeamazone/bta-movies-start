@@ -5,7 +5,7 @@ Für Arbeiten an Konfigurations-Dateien unbedingt Text-Editoren benutzen, die Ze
 Unter Windows z.B TextPad: 
 https://www.textpad.com/de/download 
 
-#### Für Windows DNS in host Datei eintragen (C:\Windows\System32\drivers\etc\hosts)
+#### Für Windows DNS in host Datei eintragen (C:\Window\System32\drivers\etc\hosts)
 #### Für Mac OSX, Linux DNS in host Datei eintragen (/etc/hosts)
 - 127.0.0.1	bta-movies-start.loc
 
@@ -14,16 +14,35 @@ Zugriffsrechte unter Windows setzen
 
 #### Apache -> httpd-vhosts.conf
 - Windows: C:\xampp\apache\conf\extra\httpd-vhosts.conf
-- Mac OSX: /Applications/XAMPP/etc/extra/httpd-vhosts.conf
 ```
 <VirtualHost *:80>
+	ServerName localhost
+	DocumentRoot "/xampp/htdocs"
+	CustomLog "logs/access.log" common
+	ErrorLog "logs/error.log"
+</VirtualHost>
+<VirtualHost *:80>
 	ServerName bta-movies-start.loc
-    DocumentRoot "FULL PATH TO ... /htdocs/bta-movies-start"
+	DocumentRoot "/xampp/htdocs/bta-movies-start"
 	CustomLog "logs/access_bta-movies-start.log" common
 	ErrorLog "logs/error_bta-movies-start.log"
 </VirtualHost>
 ```
-
+- Mac OSX: /Applications/XAMPP/etc/extra/httpd-vhosts.conf
+```
+<VirtualHost *:80>
+	ServerName localhost
+	DocumentRoot "/Applications/XAMPP/htdocs"
+	CustomLog "logs/access.log" common
+	ErrorLog "logs/error.log"
+</VirtualHost>
+<VirtualHost *:80>
+	ServerName bta-movies-start.loc
+	DocumentRoot "/Applications/XAMPP/htdocs/bta-movies-start"
+	CustomLog "logs/access_bta-movies-start.log" common
+	ErrorLog "logs/error_bta-movies-start.log"
+</VirtualHost>
+```
 #### Apache -> httpd.conf überprüfen
 - Windows: C:\xampp\apache\conf\httpd.conf
 - Mac OSX: /Applications/XAMPP/etc/httpd.conf
@@ -55,9 +74,9 @@ Beispiele:
 - aus bta-movies-start.loc/?controller=authors&action=index wird: bta-movies-start.loc/authors
 - aus bta-movies-start.loc/?controller=authors&action=edit&id=1 wird: bta-movies-start.loc/authors/edit/1
 
-Das gesamte Routing wird in index.php implementiert. Eine bestimmte Route (z.B bta-movies/authors) 
-instanziert einen bestimmten Controller und führt eine für diese Route vorgesehene Aktion (Controller Methode)
-aus. Beispiel: bta-movies/authors => AuthorController::index()
+Das gesamte Routing wird in index.php implementiert. Eine bestimmte Route 
+(z.B: bta-movies-start/authors) instanziert einen bestimmten Controller und führt eine für diese Route vorgesehene Aktion (Controller Methode)
+aus. Beispiel: bta-movies-start/authors => AuthorController::index()
 
 #### Daten (Model) und Views
 Die Controller inkludieren per require_once die vorgesehenen View-Files
