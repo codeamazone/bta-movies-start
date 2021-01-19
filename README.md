@@ -74,9 +74,9 @@ Beispiele:
 - aus bta-movies-start.loc/?controller=authors&action=index wird: bta-movies-start.loc/authors
 - aus bta-movies-start.loc/?controller=authors&action=edit&id=1 wird: bta-movies-start.loc/authors/edit/1
 
-Das gesamte Routing wird in index.php implementiert. Eine bestimmte Route (z.B bta-movies/authors) 
-instanziert einen bestimmten Controller und führt eine für diese Route vorgesehene Aktion (Controller Methode)
-aus. Beispiel: bta-movies/authors => AuthorController::index()
+Das gesamte Routing wird in index.php implementiert. Eine bestimmte Route 
+(z.B: bta-movies-start/authors) instanziert einen bestimmten Controller und führt eine für diese Route vorgesehene Aktion (Controller Methode)
+aus. Beispiel: bta-movies-start/authors => AuthorController::index()
 
 #### Daten (Model) und Views
 Die Controller inkludieren per require_once die vorgesehenen View-Files
