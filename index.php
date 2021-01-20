@@ -15,6 +15,13 @@ if(isset($_GET['controller'])) {
     1. switch für $_GET['controller'] bauen, um $controller als Instanz einer 
     exsitierenden Controller-Klasse zu setzten    
 */
+    switch($_GET['controller']) {
+        case 'authors':
+            require_once 'Controller/AuthorController.php';
+            $controller = new AuthorController();
+            break;
+    }
+
 
 /* 
     2. hier $action setzen, wenn $controller nicht null ist 
