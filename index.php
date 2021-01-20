@@ -9,5 +9,6 @@ $action     = null;
 $controller = null;
 
 // show dump of GET Params
-//Helper::dump($_GET);
+Helper::dump($_GET);
+// changes from main branch
 ?>
