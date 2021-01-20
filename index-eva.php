@@ -15,16 +15,22 @@ if (isset($_GET['controller'])) {
     1. switch für $_GET['controller'] bauen, um $controller als Instanz einer
     existierenden Controller-Klasse zu setzen
 */
+    // Frage ab, ob Parameter gesetzt wurde per URL
     switch ($_GET['controller']) {
         case 'authors':
-            $controller = 'authors';
+            require_once 'Controller/AuthorController.php';
+            // Instanziere ein neues Objekt der KLasse AuthorController
+            $controller = new AuthorController();
+            // Rufe Methode index der AuthorController-Klasse auf
+            $controller->index();
             break;
-        case 'movies':
-            $controller = 'movies';
-            break;
-        default:
-            $controller = null;
+            // case 'movies':
+            //     require_once '';
+            //     break;
+            // default:
+            //     require_once 'Views/home.php';
     }
+
 
     /*
     2. hier $action setzen, wenn $conreoller nicht null ist
@@ -32,7 +38,6 @@ if (isset($_GET['controller'])) {
     UND eine methode $action des Objekts $controller existiert
     (php-Funktion: method_exists)
 */
-    echo "Controller existiert";
 } else {
     require_once 'Views/home.php';
 }
