@@ -15,27 +15,19 @@ if(isset($_GET['controller'])) {
     1. switch für $_GET['controller'] bauen, um $controller als Instanz einer 
     exsitierenden Controller-Klasse zu setzten    
 */
-switch ($_GET['controller']) {
-    case 'authors':
-        require_once 'Controller/AuthorController.php';
-        // Instanziere ein neues Objekt der KLasse AuthorController
-        $controller = new AuthorController();
-        // Rufe Methode index der AuthorController-Klasse auf
-        $controller->index();
-        break;
-        // case 'movies':
-        //     require_once '';
-        //     break;
-        // default:
-        //     require_once 'Views/home.php';
-}
+    switch($_GET['controller']) {
+        case 'authors':
+            require_once 'Controller/AuthorController.php';
+            $controller = new AuthorController();
+            break;
+    }
+
 
 /* 
     2. hier $action setzen, wenn $controller nicht null ist 
     UND isset($_GET['action'])
     UND eine methode $action des objekts $controller existiert (php-funktion: method_exists)
 */
-
 } 
 else {
     require_once 'Views/home.php';
@@ -43,3 +35,4 @@ else {
 // show dump of GET Params
 Helper::dump($_GET);
 // changes from main branch
+?>
