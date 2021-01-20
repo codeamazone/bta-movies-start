@@ -6,11 +6,10 @@ class AuthorController extends Controller
 
     public function index()
     {
-        echo "Hallo, bin im Index!<br>" . __METHOD__;
+        echo 'hallo bin in index';
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         echo __METHOD__ . " ID: $id";
     }
 }
