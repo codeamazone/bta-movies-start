@@ -33,8 +33,8 @@ if(isset($_GET['controller'])) {
         // prüfe, ob es ein id-parameter gibt, wenn ja: 
         // dann $controller->$action($id)
         // wenn nicht dann ohne parameter $controller->$action()
-        if(isset($_GET['action'])) {
-            $id = $_GET['action'];
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
             $controller->$action($id);
         } else {
             $controller->$action();
