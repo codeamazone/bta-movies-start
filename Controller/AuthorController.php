@@ -10,9 +10,7 @@ class AuthorController extends Controller
 
     public function index()
     {
-        $list = $this->model->all();
-        require_once 'Views/author/index.php';
-//        echo 'hallo bin in index';
+        echo 'hallo bin in index';
     }
 
     public function show($id) {
