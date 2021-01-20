@@ -27,8 +27,7 @@ if (isset($_GET['controller'])) {
             // case 'movies':
             //     require_once '';
             //     break;
-            // default:
-            //     require_once 'Views/home.php';
+
     }
 
 
@@ -38,6 +37,24 @@ if (isset($_GET['controller'])) {
     UND eine methode $action des Objekts $controller existiert
     (php-Funktion: method_exists)
 */
+
+    // prüfe, ob controller != null, action eingegeben wurde und die Methode im controller existiert
+    if ($controller && isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
+        // valide Klassenfunktion wurde gefunden und wird auf $action geschrieben
+        $action = $_GET['action'];
+        // Rufe die Methode im controller auf
+        // $controller->$action();
+        // Prüfe, ob ein id-Parameter eigegeben wurde, wenn ja:
+        // $controller->$action($id), wenn nein, dannn ohne Parameter
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $controller->$action($id);
+        } else {
+            $controller->$action;
+        }
+    } else {
+        require_once 'Views/home.php';
+    }
 } else {
     require_once 'Views/home.php';
 }
