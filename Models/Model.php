@@ -4,11 +4,11 @@ class Model extends MyDB {
 
     protected $table;
 
-    protected function all() {
-
+    public function all() {
+                
     }
         
-    protected function find(int $id) {
+    public function find(int $id) {
         
     }
 }
