@@ -54,3 +54,5 @@ FROM authors a
 JOIN movies m ON a.id = m.author_id
 GROUP BY a.id
 ORDER BY anzahlMovies DESC
+
+-- Meine Lösungen
