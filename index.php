@@ -55,6 +55,6 @@ else {
     require_once 'Views/home.php';
 }
 // show dump of GET Params
-Helper::dump($_GET);
+// Helper::dump($_GET);
 // changes from main branch
 ?>
