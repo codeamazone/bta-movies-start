@@ -14,12 +14,9 @@ class AuthorController extends Controller
         require_once 'Views/author/index.php';
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $item = $this->model->find($id);
-        // füge dem Arrray neues Element 'movies' hinzu, das alle movies
-        // von author enthält
-        $item['movies'] = $this->model->getMovies($id);
+        $item['movies'] = $this->model->getMovies($id); 
         require_once 'Views/author/show.php';
     }
 }
