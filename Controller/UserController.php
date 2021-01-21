@@ -47,6 +47,7 @@ class UserController {
         
         // benutze model User für user Abfrage as DB
         $user = $this->model->get($username, $password);
+
         if($user) {
             if(!isset($_SESSION['auth'])) {
                 $_SESSION['auth'] = $user;
