@@ -7,11 +7,11 @@
             <th>Vorname</th>
             <th>Nachname</th>
         </tr>
-        <?php foreach ($list as $author) : ?>
+        <?php foreach ($list as $item) : ?>
             <tr>
-                <td><?php echo $author['id']; ?></td>
-                <td><?php echo $author['firstname']; ?></td>
-                <td><a href="/authors/<?php echo $author['id']; ?>"><?php echo $author['lastname']; ?></a></td>
+                <td><?php echo $item['id']; ?></td>
+                <td><?php echo $item['firstname']; ?></td>
+                <td><a href="/authors/<?php echo $item['id']; ?>"><?php echo $item['lastname']; ?></a></td>
             </tr>
         <?php endforeach; ?>
     </table>

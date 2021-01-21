@@ -15,6 +15,8 @@ class AuthorController extends Controller
     }
 
     public function show($id) {
-        echo __METHOD__ . " ID: $id";
+        $item = $this->model->find($id);
+        $item['movies'] = $this->model->getMovies($id); 
+        require_once 'Views/author/show.php';
     }
 }
