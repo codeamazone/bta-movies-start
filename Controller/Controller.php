@@ -3,6 +3,7 @@ abstract class Controller {
 
     protected $model;
     protected $auth;
+    protected $viewPath;
     
     public function __construct()
     {
