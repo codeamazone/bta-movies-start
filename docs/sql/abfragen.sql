@@ -10,6 +10,7 @@ SELECT * FROM namen WHERE id=1;
 SELECT * FROM namen WHERE id=1 AND vorname LIKE 'Paul' OR vorname LIKE 'Hans';
 -- select like mit platzhalter %
 SELECT * FROM authors WHERE lastname LIKE 'a%';
+SELECT * FROM Movies ORDER BY title;
 
 -- UPDATE namen
 UPDATE namen SET vorname='Paul', nachname='Meier' WHERE id=1;
