@@ -56,3 +56,25 @@ GROUP BY a.id
 ORDER BY anzahlMovies DESC
 
 -- meine lösungen
+
+-- Display event titles and associated category
+SELECT
+	e.title,
+	c.name
+FROM event e
+JOIN category c ON  e.category_id = c.id;
+
+
+-- Display number of events per category
+SELECT
+	c.name,
+	COUNT(e.id) anzahlEvents
+FROM category c
+JOIN event e ON c.id = e.category_id
+GROUP BY c.name
+ORDER BY anzahlEvents;
+
+
+
+
+
