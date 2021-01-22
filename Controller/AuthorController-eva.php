@@ -51,14 +51,14 @@ class AuthorController extends Controller
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
 
-        // Prüfe, Datensatz bereits existiert
+        // Prüfe, ob in bestehendem Datensatz
         if ($id > 0) {
             // update mit eigegebenen Daten im Form
             $sql = "UPDATE authors SET firstname='$firstname', lastname='$lastname' WHERE id=?";
             $stmt = $this->model->prepare($sql);
             $stmt->execute([$id]);
         } else {
-            //insert
+            //insert neuen Autor in Autorentabelle
             $sql = "INSERT INTO authors (firstname, lastname) VALUES('$firstname''$lastname')";
             $stmt = $this->model->prepare($sql);
             $stmt->execute();

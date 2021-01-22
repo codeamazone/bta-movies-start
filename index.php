@@ -26,6 +26,9 @@ if(isset($_GET['controller'])) {
             require_once 'Controller/UserController.php';
             $controller = new UserController();
             break;
+        case 'movies':
+            require_once 'Controller/MovieController.php';
+            $controller = new MovieController();
     }
 
 /* 
@@ -57,4 +60,3 @@ else {
 // show dump of GET Params
 // Helper::dump($_GET);
 // changes from main branch
-?>
