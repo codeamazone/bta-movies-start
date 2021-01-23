@@ -22,8 +22,9 @@ class MovieController extends Controller
 
     public function show($id)
     {
-        $item = $this->model->find($id);
-        $item['author'] = $this->model->getAuthor($id);
+        $item = $this->model->getMovie($id);
+        $item['id'] = $id;
+
         require_once 'Views/movie/show.php';
     }
 
