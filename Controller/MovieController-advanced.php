@@ -42,18 +42,18 @@ class MovieController extends Controller
     public function store($id = null)
     {
         $title = $_POST['title'];
-        // $firstname = $_POST['firstname'];
-        // $lastname = $_POST['lastname'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
 
-        // // check if author already in author DB
-        // $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
-        // $stmt = $this->model->prepare($sql);
-        // // retrieve id if author already exists
-        // $authorId = $stmt->execute();
-        // $author = new AuthorController();
-        // // insert new dataset if author doesn't exist yet
-        // // using the store method from Author
-        // $author->store($authorId);
+        // check if author already in author DB
+        $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
+        $stmt = $this->model->prepare($sql);
+        // retrieve id if author already exists
+        $authorId = $stmt->execute();
+        $author = new AuthorController();
+        // insert new dataset if author doesn't exist yet
+        // using the store method from Author
+        $author->store($authorId);
 
         // if in existing movie dataset
         if ($id > 0) {
