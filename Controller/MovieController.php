@@ -29,13 +29,12 @@ class MovieController extends Controller
     }
 
     // Display form to edit or create a dataset
-    // needs to be completed/corrected!!!!!
     public function edit($id = null)
     {
         if ($id > 0) {
-            $data = $this->model->find($id);
+            $data = $this->model->getMovie($id);
         } else {
-            $date = null;
+            $data = null;
         }
         require_once 'Views/Forms/movie.php';
     }

@@ -10,7 +10,8 @@ class Movie extends Model
         $sql = "SELECT
                     m.title,
                     a.firstname,
-                    a.lastname
+                    a.lastname,
+                    a.id
                 FROM authors AS a, movies AS m
                 WHERE m.id = ? AND m.author_id = a.id";
         $result = $this->getAll($sql, [$id]);
@@ -19,9 +20,9 @@ class Movie extends Model
 
 
 
-    public function getAuthorId($firstname, $lastname)
-    {
-        $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
-        return $this->prepareAndExecute($sql);
-    }
+    // public function getAuthorId($firstname, $lastname)
+    // {
+    //     $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
+    //     return $this->prepareAndExecute($sql);
+    // }
 }
