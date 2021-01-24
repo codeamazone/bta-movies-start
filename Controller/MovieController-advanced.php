@@ -45,32 +45,36 @@ class MovieController extends Controller
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
 
-        // check if author already in author DB
-        $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
-        $stmt = $this->model->prepare($sql);
-        // retrieve id if author already exists
-        $authorId = $stmt->execute();
-        $author = new AuthorController();
-        // insert new dataset if author doesn't exist yet
-        // using the store method from Author
-        $author->store($authorId);
-
         // if in existing movie dataset
+        // assuming that only movie field is edited
         if ($id > 0) {
             // change values of according dataset (update)
             $sql = "UPDATE movies SET title = '$title' WHERE id = ?";
             $stmt = $this->model->prepare($sql);
             $stmt->execute([$id]);
         } else {
-            // insert new dataset if author already exists
-            // if ($authorId) {
-            //     $sql = "INSERT INTO movies (author_id, title) VALUES ('$authorId', '$title')";
-            //     $stmt = $this->model->prepare($sql);
-            //     $stmt->execute();
-            // // insert new author in authors, retrieve id and update movies accordingly
-            // } else {
-            //     $sql = "INSERT INTO authors (firstname, lastname)"
-
+            // retrieve author_id
+            $authorId = $this->model->getAuthorId($firstname, $lastname);
+            if ($authorId) {
+                // create new movie entry with associated author_id
+                // Alternatively use createMovie method from movie model
+                $sql = "INSERT INTO movies (author_id, title) VALUES ('$authorId', '$title')";
+                $stmt = $this->model->prepare($sql);
+                $stmt->execute();
+            } else {
+                // insert new author in author DB
+                // This could also be a method in the author model
+                $sql = "INSERT INTO authors (firstname,lastname) VALUES ('$firstname','$lastname')";
+                $stmt = $this->model->prepare($sql);
+                $stmt->execute();
+                // retrieve new author's id from author DB
+                $authorId = $this->model->getAuthorId($firstname, $lastname);
+                // insert new movie in movie DB with associated author_id
+                // Alternatively use createMovie method from movie model
+                $sql = "INSERT INTO movies (author_id, title) VALUES ('$authorId', '$title')";
+                $stmt = $this->model->prepare($sql);
+                $stmt->execute();
+            }
         }
 
         header("location: /movies");

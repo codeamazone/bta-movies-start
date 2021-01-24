@@ -20,9 +20,16 @@ class Movie extends Model
 
 
 
-    // public function getAuthorId($firstname, $lastname)
-    // {
-    //     $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = 'lastname'";
-    //     return $this->prepareAndExecute($sql);
-    // }
+    public function getAuthorId($firstname, $lastname)
+    {
+        $sql = "SELECT id FROM authors WHERE firstname = '$firstname' AND lastname = '$lastname'";
+        return $this->prepareAndExecute($sql);
+    }
+
+    public function createMovie($authorId, $title)
+    {
+        $sql = "INSERT INTO movies (author_id, title) VALUES ('$authorId', '$title')";
+        $stmt = $this->model->prepare($sql);
+        $stmt->execute();
+    }
 }

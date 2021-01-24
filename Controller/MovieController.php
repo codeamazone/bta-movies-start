@@ -58,6 +58,7 @@ class MovieController extends Controller
         // if in existing movie dataset
         if ($id > 0) {
             // change values of according dataset (update)
+            // assuming that only movie details are modified
             $sql = "UPDATE movies SET title = '$title' WHERE id = ?";
             $stmt = $this->model->prepare($sql);
             $stmt->execute([$id]);
